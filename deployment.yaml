@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: taskflow-app
+  namespace: taskflow
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: taskflow
+
+  template:
+    metadata:
+      labels:
+        app: taskflow
+
+    spec:
+      containers:
+      - name: taskflow
+
+        image: us-central1-docker.pkg.dev/project-8eacb774-b98f-4022-8f6/taskflow-repo/taskflow:v1
+
+        ports:
+        - containerPort: 80
